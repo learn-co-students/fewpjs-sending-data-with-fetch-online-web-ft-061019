@@ -6,20 +6,21 @@ function submitData(name, email) {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            name: "Steve",
-            email: "steve@steve.com"
+            name, 
+            email
         })
     };
 
-    fetch("http://localhost:3000/users", data)
+    return fetch("http://localhost:3000/users", data)
     .then(function(response) {
         return response.json();
     })
-    .then(function(data) {
-        console.log(data)
+    .then(function(json) {
+        
+        document.body.innerHTML = json["id"]
     })
     .catch(function(error) {
-        alert("Unauthorized Access");
+        document.body.innerHTML = "Unauthorized Access"
 
         console.log(error.message);
     });
